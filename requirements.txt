@@ -1,3 +1,5 @@
 kaggle
 streamlit
 tensorflow
+torchsummary
+torchvision
