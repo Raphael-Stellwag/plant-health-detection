@@ -2,16 +2,21 @@ import json
 
 import numpy as np
 
+from model_template import ModelTemplate
 
-class ModelCNN:
+
+class ModelCNN (ModelTemplate):
     name = "CNN"
-    file = "models/plant_disease_prediction_model_cnn.h5"
+    file = "models/plant_disease_prediction_model.h5"
 
     def train(self):
         pass
 
     def save_model(self):
         pass
+
+    def unload_model(self):
+        self.model = None
 
     def load_model(self):
         import tensorflow as tf

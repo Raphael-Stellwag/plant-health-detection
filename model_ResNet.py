@@ -1,3 +1,4 @@
+import json
 import os                       # for working with files
 import numpy as np              # for numerical computationss
 import pandas as pd             # for working with dataframes
@@ -17,7 +18,10 @@ from device_data_loader import DeviceDataLoader # for loading in the device (GPU
 import torchvision.io as tv_io
 import torchvision.transforms.functional as F
 from ResNet9 import ResNet9
-class ResNetModel:  
+from model_template import ModelTemplate
+
+
+class ResNetModel(ModelTemplate):
     name = "ResNet Model"
     IMG_WIDTH = 256
     IMG_HEIGHT = 256
@@ -36,6 +40,8 @@ class ResNetModel:
     def load_model(self):
         self.model = torch.load("plant-disease-model-complete.pth", map_location=torch.device('cpu'))
 
+    def unload_model(self):
+        self.model = None
 
     def predict(self, image_data):
         preprocess_trans = transforms.Compose([
@@ -46,8 +52,12 @@ class ResNetModel:
         xb = processed_image.unsqueeze(0)
         yb = self.model(xb)
         _, preds  = torch.max(yb, dim=1)
-        train = ImageFolder(self.train_dir, transform=transforms.ToTensor())
-        return train.classes[preds[0].item()]
+        # train = ImageFolder(self.train_dir, transform=transforms.ToTensor())
+        # return train.classes[preds[0].item()]
+
+        class_indices = json.load(open("class_indices.json"))
+        predicted_class_name = class_indices[str(preds[0].item())]
+        return predicted_class_name
     
 if __name__ == '__main__':
     model = ResNetModel()

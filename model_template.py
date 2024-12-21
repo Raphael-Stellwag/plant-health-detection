@@ -10,6 +10,9 @@ class ModelTemplate:
     def save_model(self):
         pass
 
+    def unload_model(self):
+        self.model = None
+
     def load_model(self):
         pass
 
