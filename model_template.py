@@ -12,4 +12,4 @@ class ModelTemplate:
         pass
 
     def predict(self, image_data):
-        pass
+        return "Prediction"
