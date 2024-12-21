@@ -1,6 +1,6 @@
 
 
-class model_template:
+class ModelTemplate:
 
     def train(self):
         pass
