@@ -1,6 +1,7 @@
 
 
 class ModelTemplate:
+    name = "Model Template"
 
     def train(self):
         pass
