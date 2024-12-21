@@ -14,9 +14,18 @@ from torchsummary import summary              # for getting the summary of our m
 from sklearn.model_selection import train_test_split # for splitting the data into training and testing
 from tensorflow.keras.preprocessing.image import ImageDataGenerator # for data augmentation
 from device_data_loader import DeviceDataLoader # for loading in the device (GPU if available else CPU)
-
+import torchvision.io as tv_io
+import torchvision.transforms.functional as F
+from ResNet9 import ResNet9
 class ResNetModel:  
     name = "ResNet Model"
+    IMG_WIDTH = 256
+    IMG_HEIGHT = 256
+    data_dir = "./data2/New Plant Diseases Dataset(Augmented)/New Plant Diseases Dataset(Augmented)"
+    train_dir = data_dir + "/train"
+    valid_dir = data_dir + "/valid"
+    
+
 
     def train(self):
         pass
@@ -25,12 +34,23 @@ class ResNetModel:
         pass
 
     def load_model(self):
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        torch.cuda.is_available()
-        self.model = torch.load('plant-disease-model-complete.pth', map_location=device)
-        self.model
+        self.model = torch.load("plant-disease-model-complete.pth", map_location=torch.device('cpu'))
+
 
     def predict(self, image_data):
-        output = self.model(batched_image_gpu)
-        output
-        return "Prediction"
+        preprocess_trans = transforms.Compose([
+            transforms.Resize((self.IMG_WIDTH, self.IMG_HEIGHT)),
+            transforms.ToTensor()
+        ])
+        processed_image = preprocess_trans(image_data)
+        xb = processed_image.unsqueeze(0)
+        yb = self.model(xb)
+        _, preds  = torch.max(yb, dim=1)
+        train = ImageFolder(self.train_dir, transform=transforms.ToTensor())
+        return train.classes[preds[0].item()]
+    
+if __name__ == '__main__':
+    model = ResNetModel()
+    model.load_model()
+    image = Image.open('TomatoEarlyBlight2.JPG')
+    print(model.predict(image))
