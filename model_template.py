@@ -2,13 +2,13 @@
 
 class model_template:
 
-    def train(self, path_to_data):
+    def train(self):
         pass
 
-    def save_model(self, save_location):
+    def save_model(self):
         pass
 
-    def load_model(self, load_location):
+    def load_model(self):
         pass
 
     def predict(self, image_data):

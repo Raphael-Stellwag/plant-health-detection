@@ -50,7 +50,12 @@ if __name__ == '__main__':
     if os.path.isdir('data') and os.path.isdir('data/plantvillage dataset'):
         print("Data directory already exists, skip downloading data")
     else:
+        if not os.path.isdir('data'):
+            os.mkdir('data')
         download_data()
+
+    if not os.path.isdir('models'):
+        os.mkdir('models')
 
 
 
