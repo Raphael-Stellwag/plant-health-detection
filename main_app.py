@@ -1,11 +1,12 @@
 import streamlit as st
 from PIL import Image
 
+from model_cnn import ModelCNN
 from model_template import ModelTemplate
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    models = [ModelTemplate()]
+    models = [ModelTemplate(), ModelCNN()]
     model_names = list()
 
     for model in models:

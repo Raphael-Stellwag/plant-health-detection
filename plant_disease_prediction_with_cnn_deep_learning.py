@@ -37,6 +37,10 @@ from zipfile import ZipFile
 from PIL import Image
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Use the Agg backend
+
+
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -60,7 +64,7 @@ print(os.listdir("data/plantvillage dataset/color/Grape___healthy")[:5])
 """# Data Preprocessing"""
 
 # Dataset Path
-base_dir = 'data/plantvillage dataset'
+base_dir = 'data/plantvillage dataset/color/'
 
 image_path = 'data/plantvillage dataset/color/Apple___Cedar_apple_rust/025b2b9a-0ec4-4132-96ac-7f2832d0db4a___FREC_C.Rust 3655.JPG'
 
@@ -139,7 +143,7 @@ model.compile(optimizer='adam',
 # Training the Model
 history = model.fit(
     train_generator,
-    steps_per_epoch=500 ,  # train_generator.samples // batch_size Number of steps per epoch
+    steps_per_epoch=50 ,  # train_generator.samples // batch_size Number of steps per epoch
     epochs=1,  # Number of epochs--迭代数量，原先是5
     validation_data=validation_generator,
     validation_steps=validation_generator.samples // batch_size  # Validation steps

@@ -3,3 +3,4 @@ streamlit
 tensorflow
 torchsummary
 torchvision
+matplotlib
