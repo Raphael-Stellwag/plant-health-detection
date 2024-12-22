@@ -143,8 +143,8 @@ model.compile(optimizer='adam',
 # Training the Model
 history = model.fit(
     train_generator,
-    steps_per_epoch=50 ,  # train_generator.samples // batch_size Number of steps per epoch
-    epochs=1,  # Number of epochs--迭代数量，原先是5
+    steps_per_epoch=train_generator.samples // batch_size,  # Number of steps per epoch
+    epochs=5,  # Number of epochs
     validation_data=validation_generator,
     validation_steps=validation_generator.samples // batch_size  # Validation steps
 )
