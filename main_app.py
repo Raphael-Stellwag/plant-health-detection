@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 
 from ResNet9 import ResNet9
+from model_EfficientNetB3 import ModelEfficientNetB3
 from model_ResNet import ResNetModel
 from model_cnn import ModelCNN
 from model_template import ModelTemplate
@@ -11,7 +12,7 @@ if __name__ == '__main__':
     last_selected_model: ModelTemplate = ModelTemplate()
     last_selected_model.load_model()
 
-    models = [ModelTemplate(), ModelCNN(), ResNetModel()]
+    models = [ModelEfficientNetB3(), ModelCNN(), ResNetModel()]
     model_names = list()
 
     for model in models:
