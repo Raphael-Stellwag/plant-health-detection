@@ -7,6 +7,10 @@ from model_ResNet import ResNetModel
 from model_cnn import ModelCNN
 from model_template import ModelTemplate
 
+# Ignore Warnings
+import warnings
+warnings.filterwarnings("ignore")
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     last_selected_model: ModelTemplate = ModelTemplate()

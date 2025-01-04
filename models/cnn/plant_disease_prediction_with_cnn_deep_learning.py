@@ -46,27 +46,27 @@ import matplotlib.image as mpimg
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras import layers, models
 
-print(os.listdir("data/plantvillage dataset"))
+print(os.listdir("../../data/plantvillage dataset"))
 
 
-print(len(os.listdir("data/plantvillage dataset/segmented")))
-print(os.listdir("data/plantvillage dataset/segmented")[:5])
+print(len(os.listdir("../../data/plantvillage dataset/segmented")))
+print(os.listdir("../../data/plantvillage dataset/segmented")[:5])
 
-print(len(os.listdir("data/plantvillage dataset/color")))
-print(os.listdir("data/plantvillage dataset/color")[:5])
+print(len(os.listdir("../../data/plantvillage dataset/color")))
+print(os.listdir("../../data/plantvillage dataset/color")[:5])
 
-print(len(os.listdir("data/plantvillage dataset/grayscale")))
-print(os.listdir("data/plantvillage dataset/grayscale")[:5])
+print(len(os.listdir("../../data/plantvillage dataset/grayscale")))
+print(os.listdir("../../data/plantvillage dataset/grayscale")[:5])
 
-print(len(os.listdir("data/plantvillage dataset/color/Grape___healthy")))
-print(os.listdir("data/plantvillage dataset/color/Grape___healthy")[:5])
+print(len(os.listdir("../../data/plantvillage dataset/color/Grape___healthy")))
+print(os.listdir("../../data/plantvillage dataset/color/Grape___healthy")[:5])
 
 """# Data Preprocessing"""
 
 # Dataset Path
-base_dir = 'data/plantvillage dataset/color/'
+base_dir = '../../data/plantvillage dataset/color/'
 
-image_path = 'data/plantvillage dataset/color/Apple___Cedar_apple_rust/025b2b9a-0ec4-4132-96ac-7f2832d0db4a___FREC_C.Rust 3655.JPG'
+image_path = '../../data/plantvillage dataset/color/Apple___Cedar_apple_rust/025b2b9a-0ec4-4132-96ac-7f2832d0db4a___FREC_C.Rust 3655.JPG'
 
 # Read the image
 img = mpimg.imread(image_path)
@@ -77,7 +77,7 @@ plt.imshow(img)
 plt.axis('off')  # Turn off axis numbers
 plt.show()
 
-image_path = 'data/plantvillage dataset/color/Apple___Cedar_apple_rust/025b2b9a-0ec4-4132-96ac-7f2832d0db4a___FREC_C.Rust 3655.JPG'
+image_path = '../../data/plantvillage dataset/color/Apple___Cedar_apple_rust/025b2b9a-0ec4-4132-96ac-7f2832d0db4a___FREC_C.Rust 3655.JPG'
 
 # Read the image
 img = mpimg.imread(image_path)
@@ -204,7 +204,7 @@ class_indices = {v: k for k, v in train_generator.class_indices.items()}
 class_indices
 
 # saving the class names as json file
-json.dump(class_indices, open('class_indices.json', 'w'))
+json.dump(class_indices, open('../../class_indices.json', 'w'))
 
 import json
 
@@ -251,7 +251,7 @@ disease_info = {
 }
 
 # Convert the dictionary to a JSON file
-with open('disease_info.json', 'w') as file:
+with open('../../disease_info.json', 'w') as file:
     json.dump(disease_info, file, indent=4)
 
 print("Disease information has been successfully written to disease_info.json")
@@ -265,7 +265,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 
 # Load the disease information from the JSON file
-with open('disease_info.json', 'r') as file:
+with open('../../disease_info.json', 'r') as file:
     disease_info = json.load(file)
 
 # Function to Load and Preprocess the Image using Pillow
@@ -286,7 +286,7 @@ def predict_image_class(model, image_path, class_indices):
     return predicted_class_name
 
 # Example Usage
-image_path = 'data/plantvillage dataset/color/Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot/00a20f6f-e8bd-4453-9e25-36ea70feb626___RS_GLSp 4655.JPG'
+image_path = '../../data/plantvillage dataset/color/Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot/00a20f6f-e8bd-4453-9e25-36ea70feb626___RS_GLSp 4655.JPG'
 predicted_class_name = predict_image_class(model, image_path, class_indices)
 
 # Output the result
@@ -311,7 +311,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 
 # Load the disease information from the JSON file
-with open('disease_info.json', 'r') as file:
+with open('../../disease_info.json', 'r') as file:
     disease_info = json.load(file)
 
 # Function to Load and Preprocess the Image using Pillow
@@ -332,7 +332,7 @@ def predict_image_class(model, image_path, class_indices):
     return predicted_class_name
 
 # Example Usage
-image_path = 'data/plantvillage dataset/segmented/Tomato___Early_blight/01861c93-ea8b-4820-aaa8-cc6003b3e75b___RS_Erly.B 7855_final_masked.jpg'
+image_path = '../../data/plantvillage dataset/segmented/Tomato___Early_blight/01861c93-ea8b-4820-aaa8-cc6003b3e75b___RS_Erly.B 7855_final_masked.jpg'
 predicted_class_name = predict_image_class(model, image_path, class_indices)
 
 # Output the result

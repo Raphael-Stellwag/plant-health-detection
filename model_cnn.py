@@ -7,7 +7,7 @@ from model_template import ModelTemplate
 
 class ModelCNN (ModelTemplate):
     name = "CNN"
-    file = "models/plant_disease_prediction_model.h5"
+    file = "models/cnn/plant_disease_prediction_model.h5"
 
     def train(self):
         pass

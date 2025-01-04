@@ -4,9 +4,9 @@ import pandas as pd
 
 class ModelEfficientNetB3:
     name = "Efficient Net B3"
-    file = "models/efficientnetb3-Plant Village Disease-99.85.h5"
-    weights = "models/efficientnetb3-Plant Village Disease-weights (1).h5"
-    classes = "models/Plant Village Disease-class_dict (1).csv"
+    file = "models/efficientnetb3/efficientnetb3-Plant Village Disease-99.85.h5"
+    weights = "models/efficientnetb3/efficientnetb3-Plant Village Disease-weights (1).h5"
+    classes = "models/efficientnetb3/Plant Village Disease-class_dict (1).csv"
 
     def train(self):
         pass

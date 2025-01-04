@@ -62,5 +62,5 @@ class ResNetModel(ModelTemplate):
 if __name__ == '__main__':
     model = ResNetModel()
     model.load_model()
-    image = Image.open('TomatoEarlyBlight2.JPG')
+    image = Image.open('models/resnet/TomatoEarlyBlight2.JPG')
     print(model.predict(image))
