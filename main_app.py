@@ -42,7 +42,18 @@ if __name__ == '__main__':
 
         image = Image.open(uploaded_file)
         st.image(image, caption='Uploaded Image.', use_column_width=True)
-        st.write("")
-        st.write("Classifying...")
-        prediction = selected_model.predict(image)
-        st.write(prediction)
+
+        with st.empty():
+            # Display "Classifying..." initially
+            st.write("Classifying...")
+
+            prediction = selected_model.predict(image)
+
+            # Update the placeholder with the prediction result
+            st.write(f"Prediction of {selected_model.name}:")
+
+        st.write(f"Class: {prediction}")
+        splitted = prediction.split("___")
+        st.write(f"Plant: {splitted[0]}")
+        st.write(f"Disease: {splitted[1]}")
+        st.write(f"Healthy: {splitted[1] == 'healthy'}")
